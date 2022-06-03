@@ -1,0 +1,182 @@
+:root{
+    --clr-mylist:white;
+    --clr-mylist2:#E5EFA8
+    --clr-remainingtask:#666666;
+    --clr-pink:#FF3366;
+
+
+}
+
+
+*{
+    box-sizing:border-box;
+    margin:0;
+}
+body{
+
+    font-family: 'Raleway', sans-serif;
+   display:flex;
+   justify-content:flex-start;
+   padding:0 10vw;
+   padding-top:20vh;
+   letter-spacing: 2px;
+   
+ 
+}
+.titlecontainer
+{
+    background-color:#B87EF2;  
+    color:var(--clr-mylist);
+    padding:1rem;
+    max-width: 40%;
+   
+}
+h1{
+    color:var(--clr-pink);
+    margin-bottom: 0.4rem;
+}
+h2{
+    
+    padding-bottom: 1rem;
+    letter-spacing: 10px;
+    font-weight: 700;
+}
+
+.tasklist
+{
+    line-height:1.7;
+    list-style: circle;
+  padding-left: 1.1em;
+}
+.activitiescontainer
+{
+    margin-left:20%;
+    max-width: 30%;
+}
+form{
+    margin-top:1rem;
+}
+.new
+{
+    background: transparent;
+    border:none;
+    color:inherit;
+    border-bottom: 1px solid currentColor;
+    outline: none;
+transition: border-bottom 150ms ease-in;
+font-size: 1.1rem;
+
+
+}
+.task
+{
+    border-color: blueviolet;
+}
+
+.new:focus
+{
+border-bottom-width:1.8px ;
+
+}
+.new:focus::placeholder
+{
+    opacity:0.5;
+   
+}
+.new:focus
+{
+    transform: scale(1.02);
+   
+}
+.btn
+{ 
+    background:transparent;
+    border:none;
+    font-size: large;
+    color:#FF3366;
+cursor: pointer;
+}
+.blist
+{
+    color:white;
+}
+.btn:hover
+{
+
+    text-shadow:0.3px 0.3px 5px  pink;
+}
+.btn:active
+{
+ text-shadow:0.2px 0.2px 5px var(--clr-pink);
+}
+
+.bottombtn
+{
+    color: blueviolet;
+border: none;
+background: transparent;
+padding: 0;
+margin:0;
+}
+
+.bottombtn:hover
+{
+color:var(--clr-pink)
+}
+.bottombtn:active
+{
+    text-shadow:0.2px 0.2px 5px  pink;
+}
+.taskinsidetasks
+{
+margin:2rem;
+margin-left:1rem;
+
+}
+.form2
+{
+    margin-left:1rem;
+    margin-bottom: 1rem;
+}
+.delete-item
+{
+    margin-left:1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.preactive
+{
+    cursor: pointer;
+}
+.preactive:active
+{
+    font-weight: 700;
+
+}
+.preactive:hover
+{
+text-shadow: 0.1px 0.1px 5px white;
+}
+
+[type="checkbox"]
+{
+    opacity: 0.5; 
+    accent-color:var(--clr-pink); 
+   
+}
+
+.task-count
+{
+border-bottom:1px solid blueviolet ;
+padding: 0.25rem;
+}
+.listclassfont
+{
+    font-weight: 700;
+}
+.selected
+{
+   transition: all 1ms ease-out 0ms;
+   font-weight: bolder;
+   
+}
