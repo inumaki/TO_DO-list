@@ -174,9 +174,16 @@ padding: 0.25rem;
 {
     font-weight: 700;
 }
-.selected
+
+   .selected
 {
    transition: all 1ms ease-out 0ms;
    font-weight: bolder;
+   color:blueviolet;
+   background-color:white;
+   border-radius: 1px;
+   padding-left:0.5rem;
+   
    
 }
+   
