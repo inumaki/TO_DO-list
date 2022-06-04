@@ -14,21 +14,31 @@
 }
 body{
 
+
     font-family: 'Raleway', sans-serif;
    display:flex;
    justify-content:flex-start;
    padding:0 10vw;
    padding-top:20vh;
    letter-spacing: 2px;
+   width:100vw;
+   height:100vh;
+   background-image:url('images/bg1.jpg');
+   background-repeat: repeat;
    
  
 }
+
+
+
+
 .titlecontainer
 {
     background-color:#B87EF2;  
     color:var(--clr-mylist);
     padding:1rem;
     max-width: 40%;
+    max-height:80%;
    
 }
 h1{
@@ -52,7 +62,10 @@ h2{
 {
     margin-left:20%;
     max-width: 30%;
-    height:auto;
+    padding: 1rem;
+    background-color: white;
+    opacity: 0.95;
+    max-height: 80%;
 }
 form{
     margin-top:1rem;
