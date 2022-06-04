@@ -1,194 +1,91 @@
-:root{
-    --clr-mylist:white;
-    --clr-mylist2:#E5EFA8
-    --clr-remainingtask:#666666;
-    --clr-pink:#FF3366;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100&family=Raleway:wght@100&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">  
+<title>Document</title>
+    <link rel="stylesheet" href= "app.css">
+
+</head>
+<body>
+
+    <div class="titlecontainer">
+      <h2>My lists</h2>
+      <ul class="tasklist">
+
+      </ul>  
+ <form action>
+<input type="text" class="new list" placeholder="new list name" aria-label="new list name">
+<button class="btn list blist" id= "addlist"aria-label="create new list">+</button>
+
+ </form>  
+    </div>
 
 
-}
+<div class="activitiescontainer"  listdisplaycontainer>
+    <div class="acivityheader" id="ah"  >
+        <h1 mainheading>Something</h1>
+        <p class="task-count"   taskcount>0 task remaining</p>
+    </div>
+
+    <div class="activitylist">
+        <div class="tasks" taskbox>
+            
+            <div class="taskinsidetasks"  >
+        <input type="checkbox" id="task1-1" />
+        <label for="task-1">
+enter to do list video
+        </label>
+    </div>
 
 
-*{
-    box-sizing:border-box;
-    margin:0;
-}
-body{
+    <div class="taskinsidetasks"  >
+        <input type="checkbox" id="task1-1" />
+        <label for="task-1">
 
-    font-family: 'Raleway', sans-serif;
-   display:flex;
-   justify-content:flex-start;
-   padding:0 10vw;
-   padding-top:20vh;
-   letter-spacing: 2px;
-   
- 
-}
-.titlecontainer
-{
-    background-color:#B87EF2;  
-    color:var(--clr-mylist);
-    padding:1rem;
-    max-width: 40%;
-   
-}
-h1{
-    color:var(--clr-pink);
-    margin-bottom: 0.4rem;
-}
-h2{
+enter to do list video
+        </label>
+    </div>
+</div>
+       <form action="" class="form2">
+        
+        <input type="text" class="new task" placeholder="new task name" aria-label="new task name" tasknameform2>
+        <button class="btn task" id="addtask"aria-label="create new task">+</button>
+        
+    </form> 
     
-    padding-bottom: 1rem;
-    letter-spacing: 10px;
-    font-weight: 700;
-}
+    <div class="delete-item">
+    
+    <button class="bottombtn b1">Clear selected items</button>
+    <button class="bottombtn b2">Clear list</button>
 
-.tasklist
-{
-    line-height:1.7;
-    list-style: circle;
-  padding-left: 1.1em;
-}
-.activitiescontainer
-{
-    margin-left:20%;
-    max-width: 30%;
-}
-form{
-    margin-top:1rem;
-}
-.new
-{
-    background: transparent;
-    border:none;
-    color:inherit;
-    border-bottom: 1px solid currentColor;
-    outline: none;
-transition: border-bottom 150ms ease-in;
-font-size: 1.1rem;
+    </div>
 
 
-}
-.task
-{
-    border-color: blueviolet;
-}
+</div>
+</div>
 
-.new:focus
-{
-border-bottom-width:1.8px ;
-
-}
-.new:focus::placeholder
-{
-    opacity:0.5;
-   
-}
-.new:focus
-{
-    transform: scale(1.02);
-   
-}
-.btn
-{ 
-    background:transparent;
-    border:none;
-    font-size: large;
-    color:#FF3366;
-cursor: pointer;
-}
-.blist
-{
-    color:white;
-}
-.btn:hover
-{
-
-    text-shadow:0.3px 0.3px 5px  pink;
-}
-.btn:active
-{
- text-shadow:0.2px 0.2px 5px var(--clr-pink);
-}
-
-.bottombtn
-{
-    color: blueviolet;
-border: none;
-background: transparent;
-padding: 0;
-margin:0;
-}
-
-.bottombtn:hover
-{
-color:var(--clr-pink)
-}
-.bottombtn:active
-{
-    text-shadow:0.2px 0.2px 5px  pink;
-}
-.taskinsidetasks
-{
-margin:1rem;
-
-margin-left:1rem;
+<template id = "tasktemplate">
+    <div  class="taskinsidetasks" >
+        <input type="checkbox" checkboxstatus />
+        <label>
+        </label>
+    </div>
+</template>
 
 
-}
-.form2
-{
-    margin-left:1rem;
-    margin-bottom: 1rem;
-    color:#FF3366;
-}
-.delete-item
-{
-    margin-left:1rem;
-    display: flex;
-    justify-content: space-between;
-}
-.preactive
-{
-    cursor: pointer;
-}
-.preactive:active
-{
-    font-weight: 700;
 
-}
-.preactive:hover
-{
-text-shadow: 0.1px 0.1px 5px white;
-}
+<script src="app.js"></script>
 
-[type="checkbox"]
-{
-    opacity: 0.5; 
-    accent-color:var(--clr-pink); 
-   
-}
 
-.task-count
-{
-border-bottom:1px solid blueviolet ;
-padding: 0.25rem;
-padding-bottom: 0.5rem ;
-color:blueviolet;
-}
-.listclassfont
-{
-    font-weight: 700;
-}
-.selected
-{
-   transition: all 1ms ease-out 0ms;
-   font-weight:bolder;
-   color:white;
-   border-radius: 1px;
-   padding-left:0.5rem;
-}
-.task::placeholder
-{
-    color:grey;
-    opacity: 0.6;
-}
+</body>
+</html>
