@@ -129,14 +129,17 @@ color:var(--clr-pink)
 }
 .taskinsidetasks
 {
-margin:2rem;
+margin:1rem;
+
 margin-left:1rem;
+
 
 }
 .form2
 {
     margin-left:1rem;
     margin-bottom: 1rem;
+    color:#FF3366;
 }
 .delete-item
 {
@@ -169,21 +172,23 @@ text-shadow: 0.1px 0.1px 5px white;
 {
 border-bottom:1px solid blueviolet ;
 padding: 0.25rem;
+padding-bottom: 0.5rem ;
+color:blueviolet;
 }
 .listclassfont
 {
     font-weight: 700;
 }
-
-   .selected
+.selected
 {
    transition: all 1ms ease-out 0ms;
-   font-weight: bolder;
-   color:blueviolet;
-   background-color:white;
+   font-weight:bolder;
+   color:white;
    border-radius: 1px;
    padding-left:0.5rem;
-   
-   
 }
-   
+.task::placeholder
+{
+    color:grey;
+    opacity: 0.6;
+}
