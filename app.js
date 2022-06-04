@@ -46,15 +46,22 @@ if (tasknameform2.value == null || tasknameform2.value == "") return;
 })
 
 //--------------------------------------------------------
-// checkbox event listener
+
+
+// checkbox event listener--------------------------------
 taskbox.addEventListener('click',(e)=>{
 
 if(e.target.tagName.toLowerCase()==='input' )
 {
 
+console.dir(e)
 const selectedListobj= lists.find(list=>list.id===selectedListId)
 const selectedTask= selectedListobj.tasks.find(task=>task.id===e.target.id)
 selectedTask.complete=e.target.checked;
+if(selectedTask.complete==true)
+e.target.nextElementSibling.classList.add('overline')
+else
+e.target.nextElementSibling.classList.toggle('overline')
 save()
 rendertaskcount(selectedListobj)
 }
@@ -160,6 +167,8 @@ listtaskelement.content.childNodes[1].children[1].id=task_list.id;
 listtaskelement.content.childNodes[1].children[1].append(task_list.name);
 listtaskelement.content.childNodes[1].children[0].id=task_list.id;
 listtaskelement.content.childNodes[1].children[0].checked=task_list.complete;
+if(task_list.complete===true)
+listtaskelement.content.childNodes[1].children[1].classList.add('overline')
 //checkbox.id=task_list.id;
 //checkbox.checked= task_list.complete;
 //const label= listtaskelement.querySelector('label')

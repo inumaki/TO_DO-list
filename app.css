@@ -169,3 +169,11 @@ color:blueviolet;
     color:grey;
     opacity: 0.6;
 }
+.overline
+{
+
+text-decoration: line-through;
+text-decoration-color:#1fff9e;
+color:#74fc9d;
+
+}
