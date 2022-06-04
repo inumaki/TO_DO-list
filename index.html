@@ -31,31 +31,39 @@
     </div>
 
 
-<div class="activitiescontainer">
-    <div class="acivityheader" id="ah">
-        <h1 >Something</h1>
-        <p class="task-count">0 task remaining</p>
+<div class="activitiescontainer"  listdisplaycontainer>
+    <div class="acivityheader" id="ah"  >
+        <h1 mainheading>Something</h1>
+        <p class="task-count"   taskcount>0 task remaining</p>
     </div>
 
     <div class="activitylist">
-        <div class="tasks">
+        <div class="tasks" taskbox>
             
-            <div class="taskinsidetasks">
+            <div class="taskinsidetasks"  >
         <input type="checkbox" id="task1-1" />
         <label for="task-1">
-<span class="custom-checkbox"> </span>
+
 enter to do list video
         </label>
-      
     </div>
 
+
+    <div class="taskinsidetasks"  >
+        <input type="checkbox" id="task1-1" />
+        <label for="task-1">
+
+enter to do list video
+        </label>
+    </div>
+</div>
        <form action="" class="form2">
         
         <input type="text" class="new task" placeholder="new task name" aria-label="new task name">
         <button class="btn task" id="addtask"aria-label="create new task">+</button>
         
     </form> 
-    </div>
+    
     <div class="delete-item">
     
     <button class="bottombtn b1">Clear selected items</button>
@@ -65,6 +73,21 @@ enter to do list video
 
 
 </div>
+</div>
+
+
+
+
 <script src="app.js"></script>
+<template id = "task-template">
+    <div  class="taskinsidetasks" >
+        <input type="checkbox" checkboxstatus />
+        <label>
+
+        </label>
+    </div>
+
+</template>
+
 </body>
 </html>
