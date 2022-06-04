@@ -7,40 +7,11 @@
 
 }
 
-
 *{
     box-sizing:border-box;
     margin:0;
 }
-body{
 
-
-    font-family: 'Raleway', sans-serif;
-   display:flex;
-   justify-content:flex-start;
-   padding:0 10vw;
-   padding-top:20vh;
-   letter-spacing: 2px;
-   width:100vw;
-   height:100vh;
-   background-image:url('images/bg1.jpg');
-   background-repeat: repeat;
-   
- 
-}
-
-
-
-
-.titlecontainer
-{
-    background-color:#B87EF2;  
-    color:var(--clr-mylist);
-    padding:1rem;
-    max-width: 40%;
-    max-height:80%;
-   
-}
 h1{
     color:var(--clr-pink);
     margin-bottom: 0.4rem;
@@ -58,15 +29,7 @@ h2{
     list-style: circle;
   padding-left: 1.1em;
 }
-.activitiescontainer
-{
-    margin-left:20%;
-    max-width: 30%;
-    padding: 1rem;
-    background-color: white;
-    opacity: 0.95;
-    max-height: 80%;
-}
+
 form{
     margin-top:1rem;
 }

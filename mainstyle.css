@@ -1,0 +1,88 @@
+:root{
+    --clr-mylist:white;
+    --clr-mylist2:#E5EFA8
+    --clr-remainingtask:#666666;
+    --clr-pink:#FF3366;
+
+
+}
+
+body{
+
+    font-family: 'Raleway', sans-serif;
+   display:grid;
+   
+   letter-spacing: 2px;
+   background-image:url('images/bg1.jpg');
+   background-repeat: repeat;
+   grid:"header header header header" auto 
+   "...... lists tasks ......" auto/
+   1fr minmax(150px,300px) minmax(250px,400px) 1fr;
+ 
+}
+.titlecontainer
+{
+    display: inline-block;
+    grid-area:lists;
+    background-color:#B87EF2;  
+    color:var(--clr-mylist);
+    padding:1rem;
+    margin-right:1rem;
+   
+}
+.activitiescontainer
+{
+  
+   grid-area:tasks;
+    padding: 1rem;
+    background-color: white;
+    opacity: 0.95;
+
+}
+.Title
+{
+
+grid-area:header;
+text-align:center;
+font-size:50px;
+color:blueviolet
+
+}
+.tspan
+{
+    color:var(--clr-pink)
+}
+@media (max-width:940px) {
+
+
+    
+body{
+
+    font-family: 'Raleway', sans-serif;
+   display:flex;
+   flex-direction:column;
+justify-content:center;
+
+
+}
+
+.activitiescontainer
+{
+    
+    width:90%;
+    margin-top:1rem;
+
+}
+.titlecontainer
+{
+
+    
+    width:90%;
+}
+.Title
+{
+    
+    margin-left:0;
+}
+    
+}
