@@ -36,7 +36,6 @@ body{
    grid-area:tasks;
     padding: 1rem;
     background-color: white;
-    opacity: 0.95;
 
 }
 .Title
@@ -63,6 +62,7 @@ body{
    flex-direction:column;
 justify-content:center;
    background-image:url('images/bg2.jpg');
+    padding:10px;
 
 }
 
