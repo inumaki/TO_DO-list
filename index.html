@@ -43,7 +43,6 @@
             <div class="taskinsidetasks"  >
         <input type="checkbox" id="task1-1" />
         <label for="task-1">
-
 enter to do list video
         </label>
     </div>
@@ -59,7 +58,7 @@ enter to do list video
 </div>
        <form action="" class="form2">
         
-        <input type="text" class="new task" placeholder="new task name" aria-label="new task name">
+        <input type="text" class="new task" placeholder="new task name" aria-label="new task name" tasknameform2>
         <button class="btn task" id="addtask"aria-label="create new task">+</button>
         
     </form> 
@@ -75,19 +74,18 @@ enter to do list video
 </div>
 </div>
 
+<template id = "tasktemplate">
+    <div  class="taskinsidetasks" >
+        <input type="checkbox" checkboxstatus />
+        <label>
+        </label>
+    </div>
+</template>
 
 
 
 <script src="app.js"></script>
-<template id = "task-template">
-    <div  class="taskinsidetasks" >
-        <input type="checkbox" checkboxstatus />
-        <label>
 
-        </label>
-    </div>
-
-</template>
 
 </body>
 </html>
