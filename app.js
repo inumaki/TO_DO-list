@@ -2,51 +2,78 @@ let button = document.querySelector(".btn");
 let taskcontainer = document.querySelector(".tasklist"); 
 let bottom_button_b2 = document.querySelector(".b2"); 
 let bottom_button_b1= document.querySelector(".b1");
-let addtaskbutton = document.querySelector("#addtask");
+
 let inputlist = document.querySelector(".list"); 
 console.dir(inputlist); 
 button.addEventListener("click", additems); 
 bottom_button_b2.addEventListener("click", deleteselectedlist); 
 const LOCAL_STORAGE_LIST_KEY = "task.lists"; 
 const LOCAL_STORAGE_LIST_ID_KEY = "task.selectedListId"; 
-let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []; 
-let selectedListId = localStorage.getItem(LOCAL_STORAGE_LIST_ID_KEY); 
-selectedListId= selectedListId.slice(1,selectedListId.length-1)
+let addtaskbutton = document.querySelector("#addtask");
+let tasknameform2= document.querySelector('[tasknameform2]');
+
 
 let taskcount = document.querySelector('[taskcount]')
 let mainheading= document.querySelector('[mainheading]')
 let taskbox= document.querySelector('[taskbox]')
 let listdisplaycontainer= document.querySelector('[listdisplaycontainer]')
-let listcontent = document.getElementById('task-template')
+let listcontent = document.querySelector('#tasktemplate')
+
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || []; 
+let selectedListId = localStorage.getItem(LOCAL_STORAGE_LIST_ID_KEY); 
+if(selectedListId)
+selectedListId= selectedListId.slice(1,selectedListId.length-1)
+
+
 
 
 
 
 render(); 
-
+//-------------------------right hand side task adding ----error may be here-----
 addtaskbutton.addEventListener('click',(e)=>{
 
 e.preventDefault();
-if(selectedListId==null || selectedListId=='')
-  return 
-  else
-  {
-    let listtodisplay;
-    for(let list of lists)
-    {
-      if(list.id==selectedListId)
-        {
-listtodisplay= list
-break;
-        }
-    }
-    listtodisplay.tasks.push({id:'12345',name:'determing',complete:true});
-  render()
-  save()
-  }
+if (tasknameform2.value == null || tasknameform2.value == "") return; 
+
+  let ctaskname = createTask(tasknameform2.value); 
+  tasknameform2.value = ""; 
+  const selectedListobj= lists.find(list=> list.id===selectedListId)
+  selectedListobj.tasks.push(ctaskname) 
+  render(); 
+  save(); 
 
 })
 
+//--------------------------------------------------------
+// checkbox event listener
+taskbox.addEventListener('click',(e)=>{
+
+if(e.target.tagName.toLowerCase()==='input' )
+{
+
+const selectedListobj= lists.find(list=>list.id===selectedListId)
+const selectedTask= selectedListobj.tasks.find(task=>task.id===e.target.id)
+selectedTask.complete=e.target.checked;
+save()
+rendertaskcount(selectedListobj)
+}
+
+
+})
+
+
+//-----------create task-------------
+function createTask(tasknameform2)
+{
+
+  return { id: Date.now().toString(), name:tasknameform2, complete:false}; 
+
+}
+
+//---------------------------------
+
+//----------------left hand side task container-----------------working fine
 
 taskcontainer.addEventListener("click", (e) => { 
   if (e.target.tagName.toLowerCase() === "li") { 
@@ -56,6 +83,9 @@ taskcontainer.addEventListener("click", (e) => {
   } 
 });
 
+//--------------------------------------------------------
+
+//deleted the list that is currently selected by the user--------
 
 function deleteselectedlist(e) 
 { 
@@ -75,15 +105,18 @@ lists=nlist
   render()
  } 
 
- 
+ //-------------------------------------------
+
+
+ //--------function to render task and tasklist every time a change occur-----
 
 function render() { 
   
   clearPrevious(taskcontainer);
- 
+  listdisplaycontainer.style.display='none';
   renderlist()
 
-  if(selectedListId==null || selectedListId=='')
+  if(selectedListId===null || selectedListId==='ul')
   {
     listdisplaycontainer.style.display='none';
   }
@@ -102,42 +135,68 @@ break;
     listdisplaycontainer.style.display='';
     mainheading.innerText=listtodisplay.name;
   rendertaskcount(listtodisplay)
-   clearPrevious(taskbox)
- //   rendertasklist(listtodisplay)
-  }
+  clearPrevious(taskbox)
+rendertasklist(listtodisplay)
+ 
 
 }
+
+}
+
+//------------------rendertasklist----right hand task- checkbox----label----------------------
 
 function rendertasklist(listtodisplay)
 {
+
 listtodisplay.tasks.forEach(task_list => {
+
+  if(task_list.id){
+
 const listtaskelement= document.importNode(listcontent,true)
-const checkbox= listtaskelement.querySelector('[checkboxstatus]')
-checkbox.id=task_list.id;
-checkbox.checked= task_list.complete;
-const label= document.querySelector('label')
-label.id= task_list.id;
-label.append(task_list.name)
-taskbox.appendChild(listtaskelement)
-});
+//const checkbox= listtaskelement.querySelector('input')
+//console.log('ffdghnothing',checkbox)
+listtaskelement.content.childNodes[1].children[0].id=task_list.id;
+listtaskelement.content.childNodes[1].children[1].id=task_list.id;
+listtaskelement.content.childNodes[1].children[1].append(task_list.name);
+listtaskelement.content.childNodes[1].children[0].id=task_list.id;
+listtaskelement.content.childNodes[1].children[0].checked=task_list.complete;
+//checkbox.id=task_list.id;
+//checkbox.checked= task_list.complete;
+//const label= listtaskelement.querySelector('label')
+//label.id= task_list.id;
+//label.append(task_list.name)
+taskbox.appendChild(listtaskelement.content)
 }
+});
 
 
+}
+//-----------------------------------------------------
+
+
+// will display the task remaining ---------------error -------//
 
 function rendertaskcount(listtodisplay)
 {
-let incompletetask= listtodisplay.tasks.filter(task=>{ !task.complete})
+let incompletetask= 0;
 
-const taskstring = incompletetask.length===1?"task":"tasks";
-taskcount.innerText= `${incompletetask.length} ${taskstring} remaining`
-
-
-
+for( task of listtodisplay.tasks )
+{
+  console.log(task.complete)
+  if(task.complete===false)
+  incompletetask++;
 
 }
+console.log(incompletetask)
+const taskstring = incompletetask===1?"task":"tasks";
+taskcount.innerText= `${incompletetask} ${taskstring} remaining`
+}
+
+//----------------------------------------------------------
 
 
-function renderlist()
+//...........................working fine.............................
+function renderlist() 
 {
   for (let list of lists) { 
     let li = document.createElement("li"); 
@@ -156,7 +215,7 @@ function renderlist()
   }
 }
 
-
+//-----------------------------------------------------------------------------
 
 
 
@@ -167,12 +226,18 @@ function clearPrevious(elements) {
   } 
 }
 
+//----------------------------------------------
+
+
+
 function save() { 
   localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists)); 
   localStorage.setItem( LOCAL_STORAGE_LIST_ID_KEY, JSON.stringify(selectedListId));
    
 } 
- 
+
+//-------------------------------------adding new items---------------
+
 function additems(e) { 
   e.preventDefault(); 
   if (inputlist.value == null || inputlist.value == "") return; 
@@ -188,24 +253,24 @@ function additems(e) {
   } 
 }
 
+//------------------------------------------------creating new items specifying id----------
 function createList(lname) { 
-  return { id: Date.now().toString(), name: lname, tasks: [
-{
-id:'sdfdsfds',
-name:'test',
-complete:false
-
+  return { id: Date.now().toString(), name: lname, tasks: [  ] }; 
 }
 
-  ] }; 
-}
+//--------------------------------------------------------------------------
 
+bottom_button_b1.addEventListener('click',clearselecteditems)
 
-bottom_button_b1.addEventListener('click',clearselcteditems)
-
-function clearselcteditems(e)
+function clearselecteditems(e)
 {
 
 e.preventDefault();
+const listobj= lists.find(list=>list.id===selectedListId)
+listobj.tasks= listobj.tasks.filter(task=>task.complete===false)
+save()
+render()
 
 }
+
+//--------------------------------------------------------------------------
