@@ -91,7 +91,7 @@ function render() {
   {
     let listtodisplay=[];
     for(let list of lists)
-    {
+    { 
       if(list.id==selectedListId)
         {
 listtodisplay= list
