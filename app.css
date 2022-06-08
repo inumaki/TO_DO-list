@@ -14,7 +14,7 @@
 
 h1{
     color:var(--clr-pink);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
 }
 h2{
     
@@ -147,10 +147,12 @@ text-shadow: 0.1px 0.1px 5px white;
 
 .task-count
 {
-border-bottom:1px solid blueviolet ;
+
 padding: 0.25rem;
 padding-bottom: 0.5rem ;
 color:blueviolet;
+ font-size:.8rem;
+    font-weight:bold;
 }
 .listclassfont
 {
