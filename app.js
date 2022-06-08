@@ -2,7 +2,7 @@ let button = document.querySelector(".btn");
 let taskcontainer = document.querySelector(".tasklist"); 
 let bottom_button_b2 = document.querySelector(".b2"); 
 let bottom_button_b1= document.querySelector(".b1");
-
+let bgslider= document.querySelector('.bgslider')
 let inputlist = document.querySelector(".list"); 
 console.dir(inputlist); 
 button.addEventListener("click", additems); 
@@ -196,6 +196,16 @@ for( task of listtodisplay.tasks )
   incompletetask++;
 
 }
+ let complete= listtodisplay.tasks.length-incompletetask;
+if(complete+incompletetask!=0){
+console.log("calculation ",complete*(350/listtodisplay.tasks.length)) ;
+bgslider.style.width= `${complete*(350/listtodisplay.tasks.length)}px`
+}
+else
+bgslider.style.width="0px"; 
+  
+  
+  
 console.log(incompletetask)
 const taskstring = incompletetask===1?"task":"tasks";
 taskcount.innerText= `${incompletetask} ${taskstring} remaining`
