@@ -6,14 +6,14 @@ let sliderlength= document.querySelector('.slider').getBoundingClientRect().widt
 
 let bgslider= document.querySelector('.bgslider');
 let inputlist = document.querySelector(".list"); 
-console.dir(inputlist); 
+
 button.addEventListener("click", additems); 
 bottom_button_b2.addEventListener("click", deleteselectedlist); 
 const LOCAL_STORAGE_LIST_KEY = "task.lists"; 
 const LOCAL_STORAGE_LIST_ID_KEY = "task.selectedListId"; 
 let addtaskbutton = document.querySelector("#addtask");
 let tasknameform2= document.querySelector('[tasknameform2]');
-
+let theme = document.querySelector('.Title');
 
 let taskcount = document.querySelector('[taskcount]')
 let mainheading= document.querySelector('[mainheading]')
@@ -25,8 +25,32 @@ let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_LIST_ID_KEY); 
 if(selectedListId)
 selectedListId= selectedListId.slice(1,selectedListId.length-1)
+imagelist= ["ahoy.jpg","asteroids.jpg","bg1.jpg","bg1.png","bg2.jpg","hotdogs.jpg","special-delivery.jpg"];
+const LOCAL_STORAGE_COUNTER_THEME = "task.theme";
+let imagecounter = JSON.parse(localStorage.getItem(LOCAL_STORAGE_COUNTER_THEME)) 
+if(!imagecounter)
+imagecounter=0;
+else
+{
+  imagecounter= imagecounter%imagelist.length
+image_url = `images/${imagelist[imagecounter]}`
+image_url = `url('${image_url}')`
+document.body.style.backgroundImage= image_url;
+}
 
 
+theme.addEventListener('click',changeimage)
+
+function changeimage()
+{
+  imagecounter++;
+  imagecounter= imagecounter%imagelist.length
+image_url = `images/${imagelist[imagecounter]}`
+image_url = `url('${image_url}')`
+document.body.style.backgroundImage= image_url;
+  save();
+
+}
 
 
 
@@ -56,7 +80,7 @@ taskbox.addEventListener('click',(e)=>{
 if(e.target.tagName.toLowerCase()==='input' )
 {
 
-console.dir(e)
+
 const selectedListobj= lists.find(list=>list.id===selectedListId)
 const selectedTask= selectedListobj.tasks.find(task=>task.id===e.target.id)
 selectedTask.complete=e.target.checked;
@@ -193,14 +217,13 @@ let incompletetask= 0;
 
 for( task of listtodisplay.tasks )
 {
-  console.log(task.complete)
+  
   if(task.complete===false)
   incompletetask++;
 
 }
  let complete= listtodisplay.tasks.length-incompletetask;
 if(complete+incompletetask!=0){
-console.log("calculation ",complete*(sliderlength/listtodisplay.tasks.length)) ;
 bgslider.style.width= `${complete*(sliderlength/listtodisplay.tasks.length)}px`
 }
 else
@@ -208,7 +231,7 @@ bgslider.style.width="0px";
   
   
   
-console.log(incompletetask)
+
 const taskstring = incompletetask===1?"task":"tasks";
 taskcount.innerText= `${incompletetask} ${taskstring} remaining`
 }
@@ -255,7 +278,7 @@ function clearPrevious(elements) {
 function save() { 
   localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists)); 
   localStorage.setItem( LOCAL_STORAGE_LIST_ID_KEY, JSON.stringify(selectedListId));
-   
+   localStorage.setItem(LOCAL_STORAGE_COUNTER_THEME,JSON.stringify(imagecounter))
 } 
 
 //-------------------------------------adding new items---------------
