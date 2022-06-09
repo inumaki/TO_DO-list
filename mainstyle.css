@@ -26,7 +26,7 @@ body{
 {
     display: inline-block;
     grid-area:lists;
-    background-color:#B87EF2;  
+    background-color:#45858C;  
     color:var(--clr-mylist);
     padding:1rem;
     margin-right:1rem;
