@@ -1,4 +1,4 @@
-#Todo project# 
+# Todo project
 
 This web app allows the user to save their tasks.
 It uses local storage object to save the data in browser.
